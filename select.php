@@ -20,7 +20,8 @@ if ($status == false) {
 }else{
     while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
         $view .= '<p>';
-        $view .= '<a href="delete.php?id=' . h($result['id']) . '" onclick = conf()>[削除]';//※
+        // $view .= '<a href="delete.php?id=' . h($result['id']) . '" onclick = conf()>[削除]';//※
+        $view .= '<a href="#id_' . h($result['id']) . '" id ="id_' . h($result['id']) . '">[削除]';
         $view .= '</a>';
 
         $view .= '<a href="detail.php?id=' . h($result[$result_T[0]]) . '">';
@@ -102,8 +103,7 @@ $a = $answer_ary;
     <ul>
         <li><a href="index.php">index.php</a></li>
         <li><a href="insert.php">insert.php</a></li>
-        <li><a href="login.php">login.php</a></li>
-        <li><a href="idinput.php">idinput.php</a></li>
+        <li><a href="select.php">select.php</a></li>
     </ul>
 
 <header>
@@ -120,7 +120,6 @@ $a = $answer_ary;
 <!-- Main[Start] -->
     <div>
         <div ><?= $view ?></div>
-        <!-- <a href="aaa" onclick = conf_test()>aaa</a> -->
     </div>
 
     <p>※データ管理用　
@@ -133,25 +132,127 @@ $a = $answer_ary;
 
 <script>
 	// 削除確認
-    function conf(){
-        confirm("ok?");
-        //「キャンセル」の指示がない！！！！
-        // okだったら・・
-        // ngだったら・・
 
-        // return confirm("ok?");
-        
-        // let ret = confirm('OK?');
-        // if(ret == false){
-        //     exit();
-        // }
+    function deleteConfirm(num){
+    let j = num
+    let btn = document.getElementById('id_'+j);
+        btn.addEventListener('click', function() {
+        let result = window.confirm('OK?');
+        if( result ) {
+            window.location.href = "delete.php?id="+j;
+        }
+        else {
+        }
+    })
     }
 
-    // function conf_test(){
-    //     confirm('OK?');
-    //     console.log(conf_test());
-    // }
-    
+    deleteConfirm(8);
+    deleteConfirm(9);
+    deleteConfirm(10);
+    deleteConfirm(11);
+    deleteConfirm(12);
+    deleteConfirm(13);
+    deleteConfirm(14);
+    deleteConfirm(15);
+    deleteConfirm(16);
+    deleteConfirm(17);
+    deleteConfirm(18);
+    deleteConfirm(19);
+    deleteConfirm(20);
+    deleteConfirm(21);
+    deleteConfirm(22);
+    deleteConfirm(23);
+    deleteConfirm(24);
+    deleteConfirm(25);
+    deleteConfirm(26);
+    deleteConfirm(27);
+    deleteConfirm(28);
+    deleteConfirm(29);
+    deleteConfirm(30);
+    deleteConfirm(31);
+    deleteConfirm(32);
+    deleteConfirm(33);
+    deleteConfirm(34);
+    deleteConfirm(35);
+    deleteConfirm(36);
+    deleteConfirm(37);
+    deleteConfirm(38);
+    deleteConfirm(39);
+    deleteConfirm(40);
+    deleteConfirm(41);
+    deleteConfirm(42);
+    deleteConfirm(43);
+    deleteConfirm(44);
+    deleteConfirm(45);
+    deleteConfirm(46);
+    deleteConfirm(47);
+    deleteConfirm(48);
+    deleteConfirm(49);
+    deleteConfirm(50);
+    deleteConfirm(51);
+    deleteConfirm(52);
+    deleteConfirm(53);
+    deleteConfirm(54);
+    deleteConfirm(55);
+    deleteConfirm(56);
+    deleteConfirm(57);
+    deleteConfirm(58);
+    deleteConfirm(59);
+    deleteConfirm(60);
+    deleteConfirm(61);
+    deleteConfirm(62);
+    deleteConfirm(63);
+    deleteConfirm(64);
+    deleteConfirm(65);
+    deleteConfirm(66);
+    deleteConfirm(67);
+    deleteConfirm(68);
+    deleteConfirm(69);
+    deleteConfirm(70);
+    deleteConfirm(71);
+    deleteConfirm(72);
+    deleteConfirm(73);
+    deleteConfirm(74);
+    deleteConfirm(75);
+    deleteConfirm(76);
+    deleteConfirm(77);
+    deleteConfirm(78);
+    deleteConfirm(79);
+    deleteConfirm(80);
+    deleteConfirm(81);
+    deleteConfirm(82);
+    deleteConfirm(83);
+    deleteConfirm(84);
+    deleteConfirm(85);
+    deleteConfirm(86);
+    deleteConfirm(87);
+    deleteConfirm(88);
+    deleteConfirm(89);
+    deleteConfirm(90);
+    deleteConfirm(91);
+    deleteConfirm(92);
+    deleteConfirm(93);
+    deleteConfirm(94);
+    deleteConfirm(95);
+    deleteConfirm(96);
+    deleteConfirm(97);
+    deleteConfirm(98);
+    deleteConfirm(99);
+    deleteConfirm(100);
+
+// ※本当は下記のようにForループで書きたい。でも、Qiitaで「即時関数」といった記載があり、試してみるが
+// どうしてもできない。
+// ※また、deleteConfirmを実行すると、256行目のChartを読み込まない。
+    for(let i=0; i <= 100; i++){
+        // (function(n){
+        //     deleteConfirm(n);
+        // })(i);
+        
+    }
+ 
+
+
+
     // Chart
 	const can = $("#myChart");
 	
