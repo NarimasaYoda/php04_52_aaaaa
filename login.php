@@ -18,7 +18,6 @@
 <body>
     <ul>
         <li><a href="index.php">index.php</a></li>
-        <li><a href="insert.php">insert.php</a></li>
         <li><a href="select.php">select.php</a></li>
         <li><a href="login.php">login.php</a></li>
     </ul>

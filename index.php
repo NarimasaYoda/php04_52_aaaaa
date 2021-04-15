@@ -20,7 +20,6 @@
 <body>
     <ul>
         <li><a href="index.php">index.php</a></li>
-        <li><a href="insert.php">insert.php</a></li>
         <li><a href="select.php">select.php</a></li>
         <li><a href="login.php">login.php</a></li>
         <li><a href="idinput.php">idinput.php</a></li>
@@ -54,7 +53,8 @@
 
     <p>※データ管理用　
     <a href="login.php">ログイン</a></p>
-
+    <p>※　
+    <a href="idinput.php">IDとパスワードの登録</a></p>
     <!-- Main[End] -->
 
     <script>

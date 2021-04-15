@@ -9,7 +9,7 @@ function h($str){
 //DB接続のFunction
 function db_conn(){
     try {
-        $db_name = "gs_db_1";    //データベース名 課題では"gs_db_1"使用
+        $db_name = "gs_db_1";    //データベース名 課題では"gs_db_1"使用。
         $db_host = "localhost"; //DBホスト
         $db_id   = "root";      //アカウント名
         $db_pw   = "root";      //パスワード：XAMPPはパスワード無しに修正してください。
