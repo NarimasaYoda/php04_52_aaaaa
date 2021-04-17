@@ -21,7 +21,8 @@ if ($status == false) {
     while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
         $view .= '<p>';
         // $view .= '<a href="delete.php?id=' . h($result['id']) . '" onclick = conf()>[削除]';//※
-        $view .= '<a href="#id_' . h($result['id']) . '" id ="id_' . h($result['id']) . '">[削除]';
+        $view .= '<a href="#id_' . h($result['id']) . '" class = "delete_btn" id ="id_' . h($result['id']) . '">[削除]'; 
+        //↑＜イマヨシさん＞全部共通のclassを付与する 
         $view .= '</a>';
 
         $view .= '<a href="detail.php?id=' . h($result[$result_T[0]]) . '">';
@@ -118,7 +119,8 @@ $a = $answer_ary;
 <!-- Head[End] -->
 
 <!-- Main[Start] -->
-    <div>
+<!-- ＜イマヨシさん＞ viewを入れるが、divタグで親のcontainerを設定する -->
+    <div id= "oya_container"> 
         <div ><?= $view ?></div>
     </div>
 
@@ -133,125 +135,141 @@ $a = $answer_ary;
 <script>
 	// 削除確認
 
-    function deleteConfirm(num){
-    let j = num
-    let btn = document.getElementById('id_'+j);
+
+    function deleteConfirm(id){
+        console.log(id);
+
+        let num = id.replace("id_","",) //＜イマヨシさん＞id_10→10だけ抽出
+        let btn = document.getElementById(id);
         btn.addEventListener('click', function() {
-        let result = window.confirm('OK?');
-        if( result ) {
-            window.location.href = "delete.php?id="+j;
-        }
-        else {
-        }
-    })
+            let result = window.confirm('OK?');
+            if( result ) {
+                window.location.href = "delete.php?id="+num;
+            }
+            else {
+            }
+        })
     }
 
-    deleteConfirm(8);
-    deleteConfirm(9);
-    deleteConfirm(10);
-    deleteConfirm(11);
-    deleteConfirm(12);
-    deleteConfirm(13);
-    deleteConfirm(14);
-    deleteConfirm(15);
-    deleteConfirm(16);
-    deleteConfirm(17);
-    deleteConfirm(18);
-    deleteConfirm(19);
-    deleteConfirm(20);
-    deleteConfirm(21);
-    deleteConfirm(22);
-    deleteConfirm(23);
-    deleteConfirm(24);
-    deleteConfirm(25);
-    deleteConfirm(26);
-    deleteConfirm(27);
-    deleteConfirm(28);
-    deleteConfirm(29);
-    deleteConfirm(30);
-    deleteConfirm(31);
-    deleteConfirm(32);
-    deleteConfirm(33);
-    deleteConfirm(34);
-    deleteConfirm(35);
-    deleteConfirm(36);
-    deleteConfirm(37);
-    deleteConfirm(38);
-    deleteConfirm(39);
-    deleteConfirm(40);
-    deleteConfirm(41);
-    deleteConfirm(42);
-    deleteConfirm(43);
-    deleteConfirm(44);
-    deleteConfirm(45);
-    deleteConfirm(46);
-    deleteConfirm(47);
-    deleteConfirm(48);
-    deleteConfirm(49);
-    deleteConfirm(50);
-    deleteConfirm(51);
-    deleteConfirm(52);
-    deleteConfirm(53);
-    deleteConfirm(54);
-    deleteConfirm(55);
-    deleteConfirm(56);
-    deleteConfirm(57);
-    deleteConfirm(58);
-    deleteConfirm(59);
-    deleteConfirm(60);
-    deleteConfirm(61);
-    deleteConfirm(62);
-    deleteConfirm(63);
-    deleteConfirm(64);
-    deleteConfirm(65);
-    deleteConfirm(66);
-    deleteConfirm(67);
-    deleteConfirm(68);
-    deleteConfirm(69);
-    deleteConfirm(70);
-    deleteConfirm(71);
-    deleteConfirm(72);
-    deleteConfirm(73);
-    deleteConfirm(74);
-    deleteConfirm(75);
-    deleteConfirm(76);
-    deleteConfirm(77);
-    deleteConfirm(78);
-    deleteConfirm(79);
-    deleteConfirm(80);
-    deleteConfirm(81);
-    deleteConfirm(82);
-    deleteConfirm(83);
-    deleteConfirm(84);
-    deleteConfirm(85);
-    deleteConfirm(86);
-    deleteConfirm(87);
-    deleteConfirm(88);
-    deleteConfirm(89);
-    deleteConfirm(90);
-    deleteConfirm(91);
-    deleteConfirm(92);
-    deleteConfirm(93);
-    deleteConfirm(94);
-    deleteConfirm(95);
-    deleteConfirm(96);
-    deleteConfirm(97);
-    deleteConfirm(98);
-    deleteConfirm(99);
-    deleteConfirm(100);
-
-// ※本当は下記のようにForループで書きたい。でも、Qiitaで「即時関数」といった記載があり、試してみるが
-// どうしてもできない。
-// ※また、deleteConfirmを実行すると、256行目のChartを読み込まない。
-    for(let i=0; i <= 100; i++){
-        // (function(n){
-        //     deleteConfirm(n);
-        // })(i);
+    // ＜イマヨシさん＞「親を使って、子供を動的に回す？？？」
+    // jQueryの、.each( function(index, Element) ) index:各要素のインデックス番号 Element:繰り返し処理中の要素
+    // 『jQueryのeachメソッド』
+    $("#oya_container .delete_btn").each(function(index,delete_btn){
+        console.log(delete_btn)
+        let id = delete_btn.id;
+        deleteConfirm(id);
         
-    }
+    });
+    
+    
+
+    
+
+//     deleteConfirm(8);
+//     deleteConfirm(9);
+//     deleteConfirm(10);
+//     deleteConfirm(11);
+//     deleteConfirm(12);
+//     deleteConfirm(13);
+//     deleteConfirm(14);
+//     deleteConfirm(15);
+//     deleteConfirm(16);
+//     deleteConfirm(17);
+//     deleteConfirm(18);
+//     deleteConfirm(19);
+//     deleteConfirm(20);
+//     deleteConfirm(21);
+//     deleteConfirm(22);
+//     deleteConfirm(23);
+//     deleteConfirm(24);
+//     deleteConfirm(25);
+//     deleteConfirm(26);
+//     deleteConfirm(27);
+//     deleteConfirm(28);
+//     deleteConfirm(29);
+//     deleteConfirm(30);
+//     deleteConfirm(31);
+//     deleteConfirm(32);
+//     deleteConfirm(33);
+//     deleteConfirm(34);
+//     deleteConfirm(35);
+//     deleteConfirm(36);
+//     deleteConfirm(37);
+//     deleteConfirm(38);
+//     deleteConfirm(39);
+//     deleteConfirm(40);
+//     deleteConfirm(41);
+//     deleteConfirm(42);
+//     deleteConfirm(43);
+//     deleteConfirm(44);
+//     deleteConfirm(45);
+//     deleteConfirm(46);
+//     deleteConfirm(47);
+//     deleteConfirm(48);
+//     deleteConfirm(49);
+//     deleteConfirm(50);
+//     deleteConfirm(51);
+//     deleteConfirm(52);
+//     deleteConfirm(53);
+//     deleteConfirm(54);
+//     deleteConfirm(55);
+//     deleteConfirm(56);
+//     deleteConfirm(57);
+//     deleteConfirm(58);
+//     deleteConfirm(59);
+//     deleteConfirm(60);
+//     deleteConfirm(61);
+//     deleteConfirm(62);
+//     deleteConfirm(63);
+//     deleteConfirm(64);
+//     deleteConfirm(65);
+//     deleteConfirm(66);
+//     deleteConfirm(67);
+//     deleteConfirm(68);
+//     deleteConfirm(69);
+//     deleteConfirm(70);
+//     deleteConfirm(71);
+//     deleteConfirm(72);
+//     deleteConfirm(73);
+//     deleteConfirm(74);
+//     deleteConfirm(75);
+//     deleteConfirm(76);
+//     deleteConfirm(77);
+//     deleteConfirm(78);
+//     deleteConfirm(79);
+//     deleteConfirm(80);
+//     deleteConfirm(81);
+//     deleteConfirm(82);
+//     deleteConfirm(83);
+//     deleteConfirm(84);
+//     deleteConfirm(85);
+//     deleteConfirm(86);
+//     deleteConfirm(87);
+//     deleteConfirm(88);
+//     deleteConfirm(89);
+//     deleteConfirm(90);
+//     deleteConfirm(91);
+//     deleteConfirm(92);
+//     deleteConfirm(93);
+//     deleteConfirm(94);
+//     deleteConfirm(95);
+//     deleteConfirm(96);
+//     deleteConfirm(97);
+//     deleteConfirm(98);
+//     deleteConfirm(99);
+//     deleteConfirm(100);
+
+// // ※本当は下記のようにForループで書きたい。
+// // Qiitaで「即時関数」といった記載があり、試してみるが
+// // どうしてもできない。
+// // ※また、deleteConfirmを実行すると、256行目のChartを読み込まない。
+//     for(let i=0; i <= 100; i++){
+//         // (function(n){
+//         //     deleteConfirm(n);
+//         // })(i);
+        
+//     }
  
-
-
 
     // Chart
 	const can = $("#myChart");
