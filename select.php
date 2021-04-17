@@ -162,7 +162,7 @@ $a = $answer_ary;
     });
     
     
-
+// 以下の処理は不要
     
 
 //     deleteConfirm(8);
